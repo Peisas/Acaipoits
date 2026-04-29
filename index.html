@@ -1,250 +1,532 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Point do Nasci - Açaí</title>
-  <style>
-    /* Variáveis de Cores baseadas na Logo */
-    :root {
-      --marrom-escuro: #3d1c16;
-      --marrom-texto: #5a2d24;
-      --laranja-logo: #f3862b;
-      --bege-fundo: #f8e1b5; /* Cor de fundo da imagem enviada */
-      --branco: #ffffff;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--bege-fundo);
-      color: var(--marrom-escuro);
-    }
-    
-    /* Cabeçalho */
-    header {
-        background: var(--marrom-escuro);
-        color: var(--laranja-logo);
-        padding: 30px 20px;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-    .logo {
-        width: 100px;
-        height: 100px;
-        background: var(--bege-fundo);
-        border-radius: 50%;
-        margin-bottom: 15px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-        border: 4px solid var(--laranja-logo);
-    }
-    .logo img { width: 100%; height: 100%; object-fit: cover; }
+<title>Point do Nasci Açaí</title>
 
-    .banner { position: relative; height: 180px; overflow: hidden; border-bottom: 5px solid var(--laranja-logo); }
-    .slides { display: flex; width: 300%; height: 100%; animation: slide 12s infinite; }
-    .slide { 
-        width: 100%; flex-shrink: 0; display: flex; align-items: center; 
-        justify-content: center; color: white; font-size: 24px; font-weight: bold; 
-        text-shadow: 2px 2px 8px rgba(0,0,0,0.8); 
-    }
-    .slide:nth-child(1){ background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1598514982846-5a0d7e0c6a9f') center/cover; }
-    .slide:nth-child(2){ background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1563805042-7684c019e1cb') center/cover; }
-    .slide:nth-child(3){ background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1505253210343-5b0b9c33a0d9') center/cover; }
+<style>
 
-    @keyframes slide {
-      0%, 33% { transform: translateX(0); } 
-      36%, 66% { transform: translateX(-100%); } 
-      69%, 100% { transform: translateX(-200%); } 
-    }
+:root{
+--marrom:#3d1c16;
+--laranja:#f3862b;
+--bege:#f8e1b5;
+--white:#fff;
+}
 
-    .container { padding: 20px; max-width: 1100px; margin: auto; }
-    h2 { color: var(--marrom-escuro); border-left: 5px solid var(--laranja-logo); padding-left: 10px; margin-top: 40px; }
-    
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
-    
-    /* Cards com tom mais escuro e elegante */
-    .card {
-        background: var(--branco);
-        border-radius: 15px;
-        box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-        padding: 20px;
-        text-align: center;
-        transition: 0.3s;
-        border: 1px solid rgba(90, 45, 36, 0.1);
-    }
-    .card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
-    
-    .product-img {
-        width: 100%;
-        height: 180px;
-        object-fit: cover;
-        border-radius: 10px;
-        margin-bottom: 15px;
-    }
-    
-    .price { color: var(--marrom-escuro); font-weight: 800; font-size: 1.4rem; margin: 10px 0; }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+}
 
-    select, button, input { margin-top: 10px; padding: 12px; border-radius: 8px; border: 1px solid #ddd; width: 100%; box-sizing: border-box; font-size: 14px; }
-    
-    input#nomeCliente { border: 2px solid var(--marrom-escuro); background: #fff; font-weight: bold; }
+body{
+background:var(--bege);
+color:var(--marrom);
+padding-bottom:120px;
+}
 
-    /* Botão Laranja da Logo */
-    button {
-        background: var(--laranja-logo);
-        color: var(--marrom-escuro);
-        cursor: pointer;
-        border: none;
-        font-weight: 900;
-        text-transform: uppercase;
-        transition: 0.2s;
-    }
-    button:hover { background: var(--marrom-escuro); color: var(--laranja-logo); }
+/* HEADER */
 
-    .cart-box {
-      position: fixed; right: 15px; bottom: 90px; width: 280px;
-      background: var(--branco); padding: 15px; border-radius: 12px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.3); max-height: 350px;
-      overflow: auto; z-index: 100; border-top: 4px solid var(--laranja-logo);
-    }
+header{
+background:var(--marrom);
+padding:25px;
+text-align:center;
+color:var(--laranja);
+box-shadow:0 4px 10px rgba(0,0,0,.3);
+}
 
-    .cart-item { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; padding: 8px 0; }
-    .remove-btn { background: #c0392b; color: #fff; width: auto; padding: 5px 10px; }
-    .total { font-weight: bold; margin-top: 15px; color: var(--marrom-escuro); font-size: 1.1rem; }
-    
-    .cart { position: fixed; bottom: 0; left: 0; width: 100%; background: var(--marrom-escuro); padding: 15px; box-shadow: 0 -4px 10px rgba(0,0,0,0.2); z-index: 100; text-align: center; }
-    .cart button { width: 90%; max-width: 400px; font-size: 16px; padding: 15px; }
+header h1{
+font-size:32px;
+}
 
-  </style>
+/* BANNER */
+
+.banner{
+height:220px;
+overflow:hidden;
+position:relative;
+}
+
+.slides{
+display:flex;
+width:300%;
+height:100%;
+animation:slide 12s infinite;
+}
+
+.slide{
+width:100%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:30px;
+font-weight:bold;
+color:#fff;
+text-shadow:2px 2px 10px #000;
+}
+
+.slide:nth-child(1){
+background:url('https://images.unsplash.com/photo-1598514982846-5a0d7e0c6a9f') center/cover;
+}
+
+.slide:nth-child(2){
+background:url('https://images.unsplash.com/photo-1563805042-7684c019e1cb') center/cover;
+}
+
+.slide:nth-child(3){
+background:url('https://images.unsplash.com/photo-1505253210343-5b0b9c33a0d9') center/cover;
+}
+
+@keyframes slide{
+0%,33%{transform:translateX(0)}
+36%,66%{transform:translateX(-100%)}
+69%,100%{transform:translateX(-200%)}
+}
+
+.container{
+padding:20px;
+max-width:1200px;
+margin:auto;
+}
+
+h2{
+margin:30px 0 20px;
+border-left:6px solid var(--laranja);
+padding-left:10px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:20px;
+}
+
+.card{
+background:#fff;
+padding:18px;
+border-radius:15px;
+box-shadow:0 4px 15px rgba(0,0,0,.1);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+.card img{
+width:100%;
+height:180px;
+object-fit:cover;
+border-radius:12px;
+margin-bottom:10px;
+}
+
+.price{
+font-size:24px;
+font-weight:bold;
+margin:10px 0;
+color:var(--marrom);
+}
+
+button{
+width:100%;
+padding:12px;
+border:none;
+border-radius:8px;
+background:var(--laranja);
+color:var(--marrom);
+font-weight:bold;
+cursor:pointer;
+margin-top:10px;
+}
+
+button:hover{
+background:var(--marrom);
+color:var(--laranja);
+}
+
+input{
+width:100%;
+padding:12px;
+border-radius:8px;
+border:none;
+margin-top:10px;
+}
+
+.options{
+margin-top:10px;
+}
+
+.options label{
+display:block;
+margin:5px 0;
+background:#f2f2f2;
+padding:8px;
+border-radius:8px;
+cursor:pointer;
+}
+
+/* CARRINHO */
+
+.cart-box{
+position:fixed;
+right:10px;
+bottom:90px;
+width:300px;
+max-height:350px;
+overflow:auto;
+background:#fff;
+padding:15px;
+border-radius:12px;
+box-shadow:0 4px 20px rgba(0,0,0,.2);
+z-index:100;
+}
+
+.cart-item{
+border-bottom:1px solid #ddd;
+padding:10px 0;
+}
+
+.total{
+font-size:20px;
+font-weight:bold;
+margin-top:15px;
+}
+
+.remove{
+background:red;
+color:#fff;
+padding:5px 10px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+margin-top:5px;
+}
+
+/* FOOTER */
+
+.finish{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:var(--marrom);
+padding:15px;
+text-align:center;
+}
+
+.finish button{
+max-width:400px;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:700px){
+
+.cart-box{
+width:95%;
+right:2.5%;
+bottom:100px;
+}
+
+.slide{
+font-size:22px;
+}
+
+}
+
+</style>
 </head>
+
 <body>
 
 <header>
-  <div class="logo">
-    <img src="IMG-20260420-WA0226.jpg" alt="Logo Point do Nasci">
-  </div>
-  <h1 style="margin:0; font-size: 1.8rem;">POINT DO NASCI AÇAÍ</h1>
+<h1>🍇 POINT DO NASCI AÇAÍ</h1>
 </header>
 
 <div class="banner">
-  <div class="slides">
-    <div class="slide">🔥 O sabor que você merece!</div>
-    <div class="slide">🍨 Sorvetes e Complementos Premium</div>
-    <div class="slide">🚀 Entrega rápida via WhatsApp!</div>
-  </div>
+<div class="slides">
+<div class="slide">🔥 O melhor açaí da cidade</div>
+<div class="slide">🍨 Sorvetes e complementos premium</div>
+<div class="slide">🚚 Delivery rápido no WhatsApp</div>
+</div>
 </div>
 
 <div class="container">
-  <input id="nomeCliente" placeholder="👋 Digite seu nome para o pedido...">  
-  
-  <h2>💜 Nossos Açaís</h2>
-  <div class="grid">
-    <div class="card">
-      <img src="IMG-20260420-WA0223.jpg" class="product-img" alt="Açaí 300ml">
-      <h3>Açaí Tradicional 350ml</h3>
-      <p class="price">R$ 12,00</p>
-      <select id="comp1"><option>Granola</option><option>Leite condensado</option><option>Paçoca</option></select>
-      <button onclick="addCart('Açaí 300ml',12,comp1.value)">Adicionar Pedido</button>
-    </div>
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb" class="product-img" alt="Açaí 500ml">
-      <h3>Açaí Turbo 400ml</h3>
-      <p class="price">R$ 16,00</p>
-      <select id="comp2"><option>Granola</option><option>Leite condensado</option><option>Morango</option></select>
-      <button onclick="addCart('Açaí 500ml',18,comp2.value)">Adicionar Pedido</button>
-    </div>
-  </div>  
+<input type="text" id="nome" placeholder="Digite seu nome">
 
-  <h2>🍦 Açaí 500ml</h2>
-  <div class="grid">
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1505253210343-5b0b9c33a0d9" class="product-img" alt="Casquinha">
-      <h3>Açai gg</h3>
-      <p class="price">R$ 19,00</p>
-      <select id="comp3"><option>Chocolate</option><option>Baunilha</option><option>Misto</option></select>
-      <button onclick="addCart('Casquinha',5,comp3.value)">Adicionar Pedido</button>
-    </div>
+<h2>🍇 AÇAÍS</h2>
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb" class="product-img" alt="Milkshake">
-      <h3>Milkshake Gourmet</h3>
-      <p class="price">R$ 14,00</p>
-      <select id="comp4"><option>Oreo</option><option>Ninho com Nutella</option><option>Morango</option></select>
-      <button onclick="addCart('Milkshake',14,comp4.value)">Adicionar Pedido</button>
-    </div>
-  </div>
+<div class="grid">
+
+<!-- 200ML -->
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1598514982846-5a0d7e0c6a9f">
+
+<h3>Açaí 200ml</h3>
+
+<p>2 complementos + 1 cobertura</p>
+
+<div class="price">R$ 10</div>
+
+<div class="options">
+
+<b>Complementos</b>
+
+<label><input type="checkbox" value="Granola"> Granola</label>
+<label><input type="checkbox" value="Paçoca"> Paçoca</label>
+<label><input type="checkbox" value="Leite em pó"> Leite em pó</label>
+<label><input type="checkbox" value="M&M"> M&M</label>
+
+<b>Cobertura</b>
+
+<label><input type="checkbox" value="Chocolate"> Chocolate</label>
+<label><input type="checkbox" value="Morango"> Morango</label>
+
 </div>
 
-<div class="cart-box" id="cartBox">
-  <h4 style="margin-top:0; color: var(--marrom-escuro)">🛒 Seu Pedido</h4>
-  <div id="cartItems"></div>
-  <div class="total" id="total">Total: R$ 0,00</div>
+<button onclick="addCart('Açaí 200ml',10)">
+Adicionar
+</button>
+
 </div>
 
-<div class="cart">
-  <button onclick="finalizarPedido()">ENVIAR PEDIDO PELO WHATSAPP 📲</button>
+<!-- 350ML -->
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb">
+
+<h3>Açaí 350ml</h3>
+
+<p>3 complementos + 2 coberturas</p>
+
+<div class="price">R$ 15</div>
+
+<button onclick="addCart('Açaí 350ml',15)">
+Adicionar
+</button>
+
+</div>
+
+<!-- 500ML -->
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1505253210343-5b0b9c33a0d9">
+
+<h3>Açaí 500ml</h3>
+
+<p>4 cremes + 5 adicionais</p>
+
+<div class="price">R$ 22</div>
+
+<button onclick="addCart('Açaí 500ml',22)">
+Adicionar
+</button>
+
+</div>
+
+</div>
+
+<h2>🍨 SORVETERIA</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb">
+
+<h3>Casquinha</h3>
+
+<p>3 cremes à escolha</p>
+
+<div class="price">R$ 6</div>
+
+<button onclick="addCart('Casquinha',6)">
+Adicionar
+</button>
+
+</div>
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1589712235278-14b8f6c1b9d9">
+
+<h3>Milkshake</h3>
+
+<div class="price">R$ 14</div>
+
+<button onclick="addCart('Milkshake',14)">
+Adicionar
+</button>
+
+</div>
+
+</div>
+
+<h2>🥟 SALGADINHOS</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1601050690597-df0568f70950">
+
+<h3>Coxinha</h3>
+
+<div class="price">R$ 7</div>
+
+<button onclick="addCart('Coxinha',7)">
+Adicionar
+</button>
+
+</div>
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1513104890138-7c749659a591">
+
+<h3>Pão Pizza</h3>
+
+<div class="price">R$ 10</div>
+
+<button onclick="addCart('Pão Pizza',10)">
+Adicionar
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- CARRINHO -->
+
+<div class="cart-box">
+
+<h3>🛒 Carrinho</h3>
+
+<div id="cartItems"></div>
+
+<div class="total" id="total">
+Total: R$ 0
+</div>
+
+</div>
+
+<!-- FINALIZAR -->
+
+<div class="finish">
+
+<button onclick="finalizarPedido()">
+FINALIZAR PEDIDO
+</button>
+
 </div>
 
 <script>
-  let carrinho = [];
 
-  function addCart(nome, preco, comp) {
-    carrinho.push({nome, preco, comp});
-    renderCart();
-    // Feedback visual ao adicionar
-    const box = document.getElementById('cartBox');
-    box.style.borderColor = "#f3862b";
-    setTimeout(() => box.style.borderColor = "transparent", 500);
-  }
+let carrinho=[];
 
-  function removeItem(index) {
-    carrinho.splice(index,1);
-    renderCart();
-  }
+function addCart(nome,preco){
 
-  function renderCart() {
-    let lista = document.getElementById('cartItems');
-    let total = 0;
-    lista.innerHTML = '';
+carrinho.push({
+nome,
+preco
+});
 
-    carrinho.forEach((item,index) => {
-      total += item.preco;
-      lista.innerHTML += `
-        <div class="cart-item">
-          <span><strong>${item.nome}</strong><br><small>${item.comp}</small></span>
-          <button class="remove-btn" onclick="removeItem(${index})">X</button>
-        </div>`;
-    });
+renderCart();
 
-    document.getElementById('total').innerText = 'Total: R$ ' + total.toFixed(2);
-  }
+}
 
-  function finalizarPedido() {
-    let nome = document.getElementById('nomeCliente').value;
-    if(!nome || carrinho.length===0) return alert('Por favor, digite seu nome e escolha seus produtos!');
+function removeItem(index){
 
-    let mensagem = `*NOVO PEDIDO - POINT DO NASCI*%0A%0A`;
-    mensagem += `👤 *Cliente:* ${nome}%0A`;
-    mensagem += `----------------------------%0A`;
-    
-    let total = 0;
-    carrinho.forEach(item => {
-      mensagem += `🔸 ${item.nome} (${item.comp}) - R$ ${item.preco.toFixed(2)}%0A`;
-      total += item.preco;
-    });
+carrinho.splice(index,1);
 
-    mensagem += `----------------------------%0A`;
-    mensagem += `💰 *TOTAL: R$ ${total.toFixed(2)}*`;
+renderCart();
 
-    let numero = '558496896685';
-    window.open(`https://wa.me/${numero}?text=${mensagem}`,'_blank');
-  }
+}
+
+function renderCart(){
+
+let lista=document.getElementById('cartItems');
+
+let total=0;
+
+lista.innerHTML='';
+
+carrinho.forEach((item,index)=>{
+
+total+=item.preco;
+
+lista.innerHTML+=`
+
+<div class="cart-item">
+
+<b>${item.nome}</b>
+
+<p>R$ ${item.preco}</p>
+
+<button class="remove"
+onclick="removeItem(${index})">
+Remover
+</button>
+
+</div>
+
+`;
+
+});
+
+document.getElementById('total').innerHTML=
+'Total: R$ '+total;
+
+}
+
+function finalizarPedido(){
+
+let nome=document.getElementById('nome').value;
+
+if(nome=='' || carrinho.length==0){
+
+alert('Preencha o nome e escolha produtos');
+
+return;
+
+}
+
+let mensagem=
+`*NOVO PEDIDO*%0A%0A`;
+
+mensagem+=`👤 Cliente: ${nome}%0A`;
+
+let total=0;
+
+carrinho.forEach(item=>{
+
+mensagem+=`🍇 ${item.nome} - R$ ${item.preco}%0A`;
+
+total+=item.preco;
+
+});
+
+mensagem+=`%0A💰 TOTAL: R$ ${total}`;
+
+window.open(
+`https://wa.me/558496896685?text=${mensagem}`,
+'_blank'
+);
+
+}
+
 </script>
+
 </body>
-</html>
+  </html>
