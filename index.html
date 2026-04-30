@@ -1,532 +1,587 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Point do Nasci Açaí</title>
+  <title>Point do Nasci Açaí</title>
 
-<style>
+  <style>
 
-:root{
---marrom:#3d1c16;
---laranja:#f3862b;
---bege:#f8e1b5;
---white:#fff;
-}
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, sans-serif;
+    }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial;
-}
+    body{
+      background:#f6e7cc;
+      color:#4b1f1f;
+    }
 
-body{
-background:var(--bege);
-color:var(--marrom);
-padding-bottom:120px;
-}
+    header{
+      background:#5b1d1d;
+      color:white;
+      padding:25px;
+      text-align:center;
+    }
 
-/* HEADER */
+    .logo{
+      width:140px;
+      height:140px;
+      border-radius:50%;
+      object-fit:cover;
+      margin-bottom:15px;
+      border:4px solid #fff;
+      background:white;
+    }
 
-header{
-background:var(--marrom);
-padding:25px;
-text-align:center;
-color:var(--laranja);
-box-shadow:0 4px 10px rgba(0,0,0,.3);
-}
+    header h1{
+      font-size:38px;
+    }
 
-header h1{
-font-size:32px;
-}
+    header p{
+      margin-top:10px;
+      font-size:18px;
+    }
 
-/* BANNER */
+    .container{
+      max-width:1200px;
+      margin:auto;
+      padding:20px;
+    }
 
-.banner{
-height:220px;
-overflow:hidden;
-position:relative;
-}
+    .card{
+      background:white;
+      padding:20px;
+      border-radius:15px;
+      margin-bottom:20px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    }
 
-.slides{
-display:flex;
-width:300%;
-height:100%;
-animation:slide 12s infinite;
-}
+    h2{
+      margin-bottom:15px;
+      color:#5b1d1d;
+    }
 
-.slide{
-width:100%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:30px;
-font-weight:bold;
-color:#fff;
-text-shadow:2px 2px 10px #000;
-}
+    label{
+      display:block;
+      margin-top:15px;
+      font-weight:bold;
+    }
 
-.slide:nth-child(1){
-background:url('https://images.unsplash.com/photo-1598514982846-5a0d7e0c6a9f') center/cover;
-}
+    select,
+    input{
+      width:100%;
+      padding:12px;
+      border-radius:10px;
+      border:1px solid #ccc;
+      margin-top:5px;
+    }
 
-.slide:nth-child(2){
-background:url('https://images.unsplash.com/photo-1563805042-7684c019e1cb') center/cover;
-}
+    .checkbox-group{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+      gap:10px;
+      margin-top:10px;
+    }
 
-.slide:nth-child(3){
-background:url('https://images.unsplash.com/photo-1505253210343-5b0b9c33a0d9') center/cover;
-}
+    .checkbox-group label{
+      background:#f9f9f9;
+      padding:10px;
+      border-radius:10px;
+      border:1px solid #ddd;
+      cursor:pointer;
+      font-size:14px;
+    }
 
-@keyframes slide{
-0%,33%{transform:translateX(0)}
-36%,66%{transform:translateX(-100%)}
-69%,100%{transform:translateX(-200%)}
-}
+    button{
+      width:100%;
+      padding:15px;
+      border:none;
+      border-radius:12px;
+      font-size:17px;
+      font-weight:bold;
+      cursor:pointer;
+      margin-top:15px;
+    }
 
-.container{
-padding:20px;
-max-width:1200px;
-margin:auto;
-}
+    .btn-carrinho{
+      background:#5b1d1d;
+      color:white;
+    }
 
-h2{
-margin:30px 0 20px;
-border-left:6px solid var(--laranja);
-padding-left:10px;
-}
+    .btn-whatsapp{
+      background:#25d366;
+      color:white;
+    }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:20px;
-}
+    .btn-remover{
+      background:red;
+      color:white;
+      padding:10px;
+      margin-top:10px;
+    }
 
-.card{
-background:#fff;
-padding:18px;
-border-radius:15px;
-box-shadow:0 4px 15px rgba(0,0,0,.1);
-transition:.3s;
-}
+    footer{
+      background:#5b1d1d;
+      color:white;
+      text-align:center;
+      padding:20px;
+      margin-top:30px;
+    }
 
-.card:hover{
-transform:translateY(-5px);
-}
+    .item-carrinho{
+      border:1px solid #ddd;
+      border-radius:12px;
+      padding:15px;
+      margin-bottom:15px;
+    }
 
-.card img{
-width:100%;
-height:180px;
-object-fit:cover;
-border-radius:12px;
-margin-bottom:10px;
-}
+    .info{
+      background:#fff3cd;
+      padding:15px;
+      border-radius:10px;
+      margin-top:20px;
+      font-size:14px;
+    }
 
-.price{
-font-size:24px;
-font-weight:bold;
-margin:10px 0;
-color:var(--marrom);
-}
+    @media(max-width:768px){
 
-button{
-width:100%;
-padding:12px;
-border:none;
-border-radius:8px;
-background:var(--laranja);
-color:var(--marrom);
-font-weight:bold;
-cursor:pointer;
-margin-top:10px;
-}
+      header h1{
+        font-size:28px;
+      }
 
-button:hover{
-background:var(--marrom);
-color:var(--laranja);
-}
+      .checkbox-group{
+        grid-template-columns:1fr;
+      }
 
-input{
-width:100%;
-padding:12px;
-border-radius:8px;
-border:none;
-margin-top:10px;
-}
+    }
 
-.options{
-margin-top:10px;
-}
-
-.options label{
-display:block;
-margin:5px 0;
-background:#f2f2f2;
-padding:8px;
-border-radius:8px;
-cursor:pointer;
-}
-
-/* CARRINHO */
-
-.cart-box{
-position:fixed;
-right:10px;
-bottom:90px;
-width:300px;
-max-height:350px;
-overflow:auto;
-background:#fff;
-padding:15px;
-border-radius:12px;
-box-shadow:0 4px 20px rgba(0,0,0,.2);
-z-index:100;
-}
-
-.cart-item{
-border-bottom:1px solid #ddd;
-padding:10px 0;
-}
-
-.total{
-font-size:20px;
-font-weight:bold;
-margin-top:15px;
-}
-
-.remove{
-background:red;
-color:#fff;
-padding:5px 10px;
-border:none;
-border-radius:6px;
-cursor:pointer;
-margin-top:5px;
-}
-
-/* FOOTER */
-
-.finish{
-position:fixed;
-bottom:0;
-left:0;
-width:100%;
-background:var(--marrom);
-padding:15px;
-text-align:center;
-}
-
-.finish button{
-max-width:400px;
-}
-
-/* RESPONSIVO */
-
-@media(max-width:700px){
-
-.cart-box{
-width:95%;
-right:2.5%;
-bottom:100px;
-}
-
-.slide{
-font-size:22px;
-}
-
-}
-
-</style>
+  </style>
 </head>
-
 <body>
 
 <header>
-<h1>🍇 POINT DO NASCI AÇAÍ</h1>
-</header>
 
-<div class="banner">
-<div class="slides">
-<div class="slide">🔥 O melhor açaí da cidade</div>
-<div class="slide">🍨 Sorvetes e complementos premium</div>
-<div class="slide">🚚 Delivery rápido no WhatsApp</div>
-</div>
-</div>
+  <!-- TROQUE logo.png PELA SUA LOGO -->
+  <img src="logo.png" class="logo">
+
+  <h1>POINT DO NASCI AÇAÍ</h1>
+
+  <p>Mais que açaí, uma experiência!</p>
+
+</header>
 
 <div class="container">
 
-<input type="text" id="nome" placeholder="Digite seu nome">
+  <div class="card">
 
-<h2>🍇 AÇAÍS</h2>
+    <h2>🍧 Monte seu Açaí</h2>
 
-<div class="grid">
+    <label>Nome</label>
+    <input type="text" id="nome" placeholder="Digite seu nome">
 
-<!-- 200ML -->
+    <label>Endereço</label>
+    <input type="text" id="endereco" placeholder="Digite seu endereço">
 
-<div class="card">
+    <label>Tamanho</label>
 
-<img src="https://images.unsplash.com/photo-1598514982846-5a0d7e0c6a9f">
+    <select id="tamanho">
 
-<h3>Açaí 200ml</h3>
+      <option value="200ml">200ml</option>
+      <option value="350ml">350ml</option>
+      <option value="400ml">400ml</option>
+      <option value="500ml">500ml</option>
+      <option value="700ml">700ml</option>
+      <option value="Casquinha">Casquinha</option>
 
-<p>2 complementos + 1 cobertura</p>
+    </select>
 
-<div class="price">R$ 10</div>
+    <div class="info">
 
-<div class="options">
+      <strong>Limites:</strong><br><br>
 
-<b>Complementos</b>
+      • 200ml → 2 adicionais + 1 cobertura<br>
+      • 350ml → 3 adicionais + 2 cremes + 2 coberturas<br>
+      • 400ml → 3 cremes + 5 adicionais<br>
+      • 500ml → 4 cremes + 5 adicionais<br>
+      • 700ml → Livre<br>
+      • Casquinha → 3 cremes
 
-<label><input type="checkbox" value="Granola"> Granola</label>
-<label><input type="checkbox" value="Paçoca"> Paçoca</label>
-<label><input type="checkbox" value="Leite em pó"> Leite em pó</label>
-<label><input type="checkbox" value="M&M"> M&M</label>
+    </div>
 
-<b>Cobertura</b>
+    <label>🍨 Cremes</label>
 
-<label><input type="checkbox" value="Chocolate"> Chocolate</label>
-<label><input type="checkbox" value="Morango"> Morango</label>
+    <div class="checkbox-group">
 
-</div>
+      <label><input type="checkbox" value="Açaí Tradicional"> Açaí Tradicional</label>
 
-<button onclick="addCart('Açaí 200ml',10)">
-Adicionar
-</button>
+      <label><input type="checkbox" value="Ninho Trufado"> Ninho Trufado</label>
 
-</div>
+      <label><input type="checkbox" value="Cupuaçu"> Cupuaçu</label>
 
-<!-- 350ML -->
+      <label><input type="checkbox" value="Maracujá"> Maracujá</label>
 
-<div class="card">
+      <label><input type="checkbox" value="Mix Energético"> Mix Energético</label>
 
-<img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb">
+      <label><input type="checkbox" value="Morango Creme"> Morango</label>
 
-<h3>Açaí 350ml</h3>
+      <label><input type="checkbox" value="Chocolate Creme"> Chocolate</label>
 
-<p>3 complementos + 2 coberturas</p>
+      <label><input type="checkbox" value="Tapioca"> Tapioca</label>
 
-<div class="price">R$ 15</div>
+    </div>
 
-<button onclick="addCart('Açaí 350ml',15)">
-Adicionar
-</button>
+    <label>✨ Adicionais</label>
 
-</div>
+    <div class="checkbox-group">
 
-<!-- 500ML -->
+      <label><input type="checkbox" value="Ovomaltine"> Ovomaltine</label>
 
-<div class="card">
+      <label><input type="checkbox" value="Leite em pó"> Leite em pó</label>
 
-<img src="https://images.unsplash.com/photo-1505253210343-5b0b9c33a0d9">
+      <label><input type="checkbox" value="MM's"> MM's</label>
 
-<h3>Açaí 500ml</h3>
+      <label><input type="checkbox" value="Gotas de chocolate"> Gotas de chocolate</label>
 
-<p>4 cremes + 5 adicionais</p>
+      <label><input type="checkbox" value="Chocoball"> Chocoball</label>
 
-<div class="price">R$ 22</div>
+      <label><input type="checkbox" value="Flocos de arroz"> Flocos de arroz</label>
 
-<button onclick="addCart('Açaí 500ml',22)">
-Adicionar
-</button>
+      <label><input type="checkbox" value="Amendoim triturado"> Amendoim triturado</label>
 
-</div>
+      <label><input type="checkbox" value="Granola"> Granola</label>
 
-</div>
+      <label><input type="checkbox" value="Amendoim em banda"> Amendoim em banda</label>
 
-<h2>🍨 SORVETERIA</h2>
+      <label><input type="checkbox" value="Castanha"> Castanha</label>
 
-<div class="grid">
+      <label><input type="checkbox" value="Jujuba"> Jujuba</label>
 
-<div class="card">
+    </div>
 
-<img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb">
+    <label>🍫 Coberturas</label>
 
-<h3>Casquinha</h3>
+    <div class="checkbox-group">
 
-<p>3 cremes à escolha</p>
+      <label><input type="checkbox" value="Leite condensado"> Leite condensado</label>
 
-<div class="price">R$ 3,00 </div>
+      <label><input type="checkbox" value="Morango Calda"> Morango</label>
 
-<button onclick="addCart('Casquinha',6)">
-Adicionar
-</button>
+      <label><input type="checkbox" value="Chocolate Calda"> Chocolate</label>
 
-</div>
+      <label><input type="checkbox" value="Uva"> Uva</label>
 
-<div class="card">
+      <label><input type="checkbox" value="Caramelo"> Caramelo</label>
 
-<img src="https://images.unsplash.com/photo-1589712235278-14b8f6c1b9d9">
+    </div>
 
-<h3>Milkshake</h3>
+    <button class="btn-carrinho" onclick="adicionarCarrinho()">
+      🛒 Adicionar ao Carrinho
+    </button>
 
-<div class="price">R$ 14,00 </div>
+  </div>
 
-<button onclick="addCart('Milkshake',14)">
-Adicionar
-</button>
+  <div class="card">
 
-</div>
+    <h2>🛒 Carrinho</h2>
 
-</div>
+    <div id="carrinho"></div>
 
-<h2>🥟 SALGADINHOS</h2>
+    <h3>
+      Total de itens:
+      <span id="totalItens">0</span>
+    </h3>
 
-<div class="grid">
+    <button class="btn-whatsapp" onclick="finalizarPedido()">
+      Finalizar Pedido no WhatsApp
+    </button>
 
-<div class="card">
-
-<img src="https://images.unsplash.com/photo-1601050690597-df0568f70950">
-
-<h3>Coxinha</h3>
-
-<div class="price">R$ 7,00 </div>
-
-<button onclick="addCart('Coxinha',7)">
-Adicionar
-</button>
+  </div>
 
 </div>
 
-<div class="card">
+<footer>
 
-<img src="https://images.unsplash.com/photo-1513104890138-7c749659a591">
+  <h3>Point do Nasci Açaí</h3>
 
-<h3>Pão Pizza</h3>
+  <p>@pointdonasci.acai</p>
 
-<div class="price">R$ 10,00</div>
-
-<button onclick="addCart('Pão Pizza',10)">
-Adicionar
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- CARRINHO -->
-
-<div class="cart-box">
-
-<h3>🛒 Carrinho</h3>
-
-<div id="cartItems"></div>
-
-<div class="total" id="total">
-Total: R$ 0
-</div>
-
-</div>
-
-<!-- FINALIZAR -->
-
-<div class="finish">
-
-<button onclick="finalizarPedido()">
-FINALIZAR PEDIDO
-</button>
-
-</div>
+</footer>
 
 <script>
 
-let carrinho=[];
+let carrinho = [];
 
-function addCart(nome,preco){
+function pegarDadosPedido(){
 
-carrinho.push({
-nome,
-preco
-});
+  let tamanho = document.getElementById("tamanho").value;
 
-renderCart();
+  let nome = document.getElementById("nome").value;
+
+  let endereco = document.getElementById("endereco").value;
+
+  let cremes = [];
+  let adicionais = [];
+  let caldas = [];
+
+  document.querySelectorAll('input[type="checkbox"]:checked').forEach(item=>{
+
+    let valor = item.value;
+
+    if(
+      valor.includes("Tradicional") ||
+      valor.includes("Trufado") ||
+      valor.includes("Cupuaçu") ||
+      valor.includes("Maracujá") ||
+      valor.includes("Energético") ||
+      valor.includes("Creme") ||
+      valor.includes("Tapioca")
+    ){
+
+      cremes.push(valor);
+
+    }
+
+    else if(
+      valor.includes("Calda") ||
+      valor == "Leite condensado" ||
+      valor == "Uva" ||
+      valor == "Caramelo"
+    ){
+
+      caldas.push(valor);
+
+    }
+
+    else{
+
+      adicionais.push(valor);
+
+    }
+
+  });
+
+  // LIMITES
+
+  let limiteCremes = 999;
+  let limiteAdicionais = 999;
+  let limiteCaldas = 999;
+
+  if(tamanho == "200ml"){
+
+    limiteAdicionais = 2;
+    limiteCaldas = 1;
+
+  }
+
+  if(tamanho == "350ml"){
+
+    limiteAdicionais = 3;
+    limiteCremes = 2;
+    limiteCaldas = 2;
+
+  }
+
+  if(tamanho == "400ml"){
+
+    limiteCremes = 3;
+    limiteAdicionais = 5;
+
+  }
+
+  if(tamanho == "500ml"){
+
+    limiteCremes = 4;
+    limiteAdicionais = 5;
+
+  }
+
+  if(tamanho == "Casquinha"){
+
+    limiteCremes = 3;
+
+  }
+
+  // VALIDAÇÕES
+
+  if(cremes.length > limiteCremes){
+
+    alert(`❌ Esse tamanho permite apenas ${limiteCremes} creme(s)`);
+
+    return null;
+
+  }
+
+  if(adicionais.length > limiteAdicionais){
+
+    alert(`❌ Esse tamanho permite apenas ${limiteAdicionais} adicional(is)`);
+
+    return null;
+
+  }
+
+  if(caldas.length > limiteCaldas){
+
+    alert(`❌ Esse tamanho permite apenas ${limiteCaldas} cobertura(s)`);
+
+    return null;
+
+  }
+
+  return{
+
+    nome,
+    endereco,
+    tamanho,
+    cremes,
+    adicionais,
+    caldas
+
+  };
 
 }
 
-function removeItem(index){
+function adicionarCarrinho(){
 
-carrinho.splice(index,1);
+  let pedido = pegarDadosPedido();
 
-renderCart();
+  if(!pedido){
+
+    return;
+
+  }
+
+  carrinho.push(pedido);
+
+  atualizarCarrinho();
+
+  limparFormulario();
+
+  alert("✅ Item adicionado ao carrinho!");
 
 }
 
-function renderCart(){
+function atualizarCarrinho(){
 
-let lista=document.getElementById('cartItems');
+  let area = document.getElementById("carrinho");
 
-let total=0;
+  area.innerHTML = "";
 
-lista.innerHTML='';
+  carrinho.forEach((item,index)=>{
 
-carrinho.forEach((item,index)=>{
+    area.innerHTML += `
 
-total+=item.preco;
+      <div class="item-carrinho">
 
-lista.innerHTML+=`
+        <h3>${item.tamanho}</h3>
 
-<div class="cart-item">
+        <p><strong>Cremes:</strong>
+        ${item.cremes.join(", ") || "Nenhum"}
+        </p>
 
-<b>${item.nome}</b>
+        <p><strong>Adicionais:</strong>
+        ${item.adicionais.join(", ") || "Nenhum"}
+        </p>
 
-<p>R$ ${item.preco}</p>
+        <p><strong>Coberturas:</strong>
+        ${item.caldas.join(", ") || "Nenhuma"}
+        </p>
 
-<button class="remove"
-onclick="removeItem(${index})">
-Remover
-</button>
+        <button 
+          class="btn-remover"
+          onclick="removerItem(${index})"
+        >
+          Remover
+        </button>
 
-</div>
+      </div>
 
-`;
+    `;
 
-});
+  });
 
-document.getElementById('total').innerHTML=
-'Total: R$ '+total;
+  document.getElementById("totalItens").innerText = carrinho.length;
+
+}
+
+function removerItem(index){
+
+  carrinho.splice(index,1);
+
+  atualizarCarrinho();
+
+}
+
+function limparFormulario(){
+
+  document.querySelectorAll('input[type="checkbox"]').forEach(item=>{
+
+    item.checked = false;
+
+  });
 
 }
 
 function finalizarPedido(){
 
-let nome=document.getElementById('nome').value;
+  if(carrinho.length == 0){
 
-if(nome=='' || carrinho.length==0){
+    alert("❌ Carrinho vazio!");
 
-alert('Preencha o nome e escolha produtos');
+    return;
 
-return;
+  }
 
-}
+  let mensagem =
+`🍧 *NOVO PEDIDO - POINT DO NASCI AÇAÍ*
 
-let mensagem=
-`*NOVO PEDIDO*%0A%0A`;
+━━━━━━━━━━━━━━━
+`;
 
-mensagem+=`👤 Cliente: ${nome}%0A`;
+  carrinho.forEach((item,index)=>{
 
-let total=0;
+    mensagem += `
 
-carrinho.forEach(item=>{
+🛒 *Item ${index + 1}*
 
-mensagem+=`🍇 ${item.nome} - R$ ${item.preco}%0A`;
+🥤 ${item.tamanho}
 
-total+=item.preco;
+🍨 Cremes:
+${item.cremes.join(", ") || "Nenhum"}
 
-});
+✨ Adicionais:
+${item.adicionais.join(", ") || "Nenhum"}
 
-mensagem+=`%0A💰 TOTAL: R$ ${total}`;
+🍫 Coberturas:
+${item.caldas.join(", ") || "Nenhuma"}
 
-window.open(
-`https://wa.me/558496896685?text=${mensagem}`,
-'_blank'
-);
+━━━━━━━━━━━━━━━
+`;
+
+  });
+
+  mensagem += `
+
+👤 Nome:
+${carrinho[0].nome}
+
+📍 Endereço:
+${carrinho[0].endereco}
+`;
+
+  let numero = "5566996612414";
+
+  let url =
+`https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
+
+  window.open(url,"_blank");
 
 }
 
 </script>
 
 </body>
-  </html>
+</html>
