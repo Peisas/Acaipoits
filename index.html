@@ -360,7 +360,7 @@ function verificarHorario(){
 
   let abertoHoje = dia >= 1 && dia <= 6;
 
-  let abertoAgora = hora >= 16 && hora < 23;
+  let abertoAgora = hora >= 17 && hora < 23;
 
   if(abertoHoje && abertoAgora){
 
@@ -368,7 +368,7 @@ function verificarHorario(){
 
     status.innerHTML = `
       ✅ Estamos ABERTOS!<br>
-      🕓 Funcionamento: Segunda a Sábado das 16h às 23h
+      🕓 Funcionamento: Segunda a Sábado das 17h às 23h
     `;
 
   }else{
@@ -379,14 +379,14 @@ function verificarHorario(){
 
       status.innerHTML = `
         ❌ Hoje estamos FECHADOS!<br>
-        🕓 Funcionamento: Segunda a Sábado das 16h às 23h
+        🕓 Funcionamento: Segunda a Sábado das 17h às 23h
       `;
 
     }else{
 
       status.innerHTML = `
         ⏰ Fora do horário de atendimento!<br>
-        🕓 Funcionamos das 16h às 23h
+        🕓 Funcionamos das 17h às 23h
       `;
 
     }
