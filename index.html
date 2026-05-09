@@ -46,6 +46,28 @@
       font-size:18px;
     }
 
+    .status-loja{
+      max-width:1200px;
+      margin:20px auto 0;
+      padding:15px;
+      border-radius:12px;
+      text-align:center;
+      font-weight:bold;
+      font-size:16px;
+    }
+
+    .aberto{
+      background:#d4edda;
+      color:#155724;
+      border:2px solid #28a745;
+    }
+
+    .fechado{
+      background:#f8d7da;
+      color:#721c24;
+      border:2px solid #dc3545;
+    }
+
     .container{
       max-width:1200px;
       margin:auto;
@@ -172,6 +194,8 @@
   <p>Mais que açaí, uma experiência!</p>
 
 </header>
+
+<div id="statusLoja" class="status-loja"></div>
 
 <div class="container">
 
@@ -324,6 +348,55 @@
 
 let carrinho = [];
 
+function verificarHorario(){
+
+  let agora = new Date();
+
+  let dia = agora.getDay();
+
+  let hora = agora.getHours();
+
+  let status = document.getElementById("statusLoja");
+
+  let abertoHoje = dia >= 1 && dia <= 6;
+
+  let abertoAgora = hora >= 16 && hora < 23;
+
+  if(abertoHoje && abertoAgora){
+
+    status.className = "status-loja aberto";
+
+    status.innerHTML = `
+      ✅ Estamos ABERTOS!<br>
+      🕓 Funcionamento: Segunda a Sábado das 16h às 23h
+    `;
+
+  }else{
+
+    status.className = "status-loja fechado";
+
+    if(dia == 0){
+
+      status.innerHTML = `
+        ❌ Hoje estamos FECHADOS!<br>
+        🕓 Funcionamento: Segunda a Sábado das 16h às 23h
+      `;
+
+    }else{
+
+      status.innerHTML = `
+        ⏰ Fora do horário de atendimento!<br>
+        🕓 Funcionamos das 16h às 23h
+      `;
+
+    }
+
+  }
+
+}
+
+verificarHorario();
+
 function pegarDadosPedido(){
 
   let tamanho = document.getElementById("tamanho").value;
@@ -341,7 +414,6 @@ function pegarDadosPedido(){
 
     let valor = item.value;
 
-    // FRUTAS
     if(
       valor == "Morango Fruta" ||
       valor == "Kiwi"
@@ -351,7 +423,6 @@ function pegarDadosPedido(){
 
     }
 
-    // CREMES
     else if(
       valor.includes("Tradicional") ||
       valor.includes("Trufado") ||
@@ -366,7 +437,6 @@ function pegarDadosPedido(){
 
     }
 
-    // COBERTURAS
     else if(
       valor.includes("Calda") ||
       valor == "Leite condensado" ||
@@ -378,7 +448,6 @@ function pegarDadosPedido(){
 
     }
 
-    // ADICIONAIS
     else{
 
       adicionais.push(valor);
@@ -386,8 +455,6 @@ function pegarDadosPedido(){
     }
 
   });
-
-  // LIMITES
 
   let limiteCremes = 999;
   let limiteAdicionais = 999;
@@ -427,8 +494,6 @@ function pegarDadosPedido(){
     limiteCremes = 1;
 
   }
-
-  // VALIDAÇÕES
 
   if(cremes.length > limiteCremes){
 
@@ -554,6 +619,32 @@ function limparFormulario(){
 }
 
 function finalizarPedido(){
+
+  let agora = new Date();
+
+  let dia = agora.getDay();
+
+  let hora = agora.getHours();
+
+  let abertoHoje = dia >= 1 && dia <= 6;
+
+  let abertoAgora = hora >= 16 && hora < 23;
+
+  if(!abertoHoje){
+
+    alert("❌ Hoje a loja está fechada!");
+
+    return;
+
+  }
+
+  if(!abertoAgora){
+
+    alert("⏰ Pedidos apenas das 16h às 23h!");
+
+    return;
+
+  }
 
   if(carrinho.length == 0){
 
