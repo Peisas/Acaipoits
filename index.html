@@ -165,7 +165,6 @@
 
 <header>
 
-  <!-- TROQUE logo.png PELA SUA LOGO -->
   <img src="logo.png" class="logo">
 
   <h1>POINT DO NASCI AÇAÍ</h1>
@@ -208,7 +207,7 @@
       • 400ml → 3 cremes + 5 adicionais<br>
       • 500ml → 4 cremes + 5 adicionais<br>
       • 700ml → Livre<br>
-      • Casquinha → 1 cremes
+      • Casquinha → 1 creme
 
     </div>
 
@@ -278,6 +277,16 @@
 
     </div>
 
+    <label>🍓 Frutas</label>
+
+    <div class="checkbox-group">
+
+      <label><input type="checkbox" value="Morango Fruta"> Morango</label>
+
+      <label><input type="checkbox" value="Kiwi"> Kiwi</label>
+
+    </div>
+
     <button class="btn-carrinho" onclick="adicionarCarrinho()">
       🛒 Adicionar ao Carrinho
     </button>
@@ -326,12 +335,24 @@ function pegarDadosPedido(){
   let cremes = [];
   let adicionais = [];
   let caldas = [];
+  let frutas = [];
 
   document.querySelectorAll('input[type="checkbox"]:checked').forEach(item=>{
 
     let valor = item.value;
 
+    // FRUTAS
     if(
+      valor == "Morango Fruta" ||
+      valor == "Kiwi"
+    ){
+
+      frutas.push(valor);
+
+    }
+
+    // CREMES
+    else if(
       valor.includes("Tradicional") ||
       valor.includes("Trufado") ||
       valor.includes("Cupuaçu") ||
@@ -345,6 +366,7 @@ function pegarDadosPedido(){
 
     }
 
+    // COBERTURAS
     else if(
       valor.includes("Calda") ||
       valor == "Leite condensado" ||
@@ -356,6 +378,7 @@ function pegarDadosPedido(){
 
     }
 
+    // ADICIONAIS
     else{
 
       adicionais.push(valor);
@@ -438,7 +461,8 @@ function pegarDadosPedido(){
     tamanho,
     cremes,
     adicionais,
-    caldas
+    caldas,
+    frutas
 
   };
 
@@ -488,6 +512,10 @@ function atualizarCarrinho(){
 
         <p><strong>Coberturas:</strong>
         ${item.caldas.join(", ") || "Nenhuma"}
+        </p>
+
+        <p><strong>🍓 Frutas:</strong>
+        ${item.frutas.join(", ") || "Nenhuma"}
         </p>
 
         <button 
@@ -557,6 +585,9 @@ ${item.adicionais.join(", ") || "Nenhum"}
 
 🍫 Coberturas:
 ${item.caldas.join(", ") || "Nenhuma"}
+
+🍓 Frutas:
+${item.frutas.join(", ") || "Nenhuma"}
 
 ━━━━━━━━━━━━━━━
 `;
